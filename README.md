@@ -83,7 +83,7 @@ sns.pairplot(returns[1:])
 ```
 <img src= "https://user-images.githubusercontent.com/66487971/87220643-66fe9280-c36e-11ea-8403-b879d2666fe8.png" width = 1000>
 
-I see the Citigroup's crush from this plot.More information [here](https://en.wikipedia.org/wiki/Citigroup#November_2008.2C_Collapse_.26_US_Government_Intervention_.28part_of_the_Global_Financial_Crisis.29)
+ Citigroup's crush can be easily seen from this plot.More information [here](https://en.wikipedia.org/wiki/Citigroup#November_2008.2C_Collapse_.26_US_Government_Intervention_.28part_of_the_Global_Financial_Crisis.29)
 
 Using this returns DataFrame, I look at  dates each bank stock had the best and worst single day returns.
 ```python
