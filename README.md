@@ -42,6 +42,7 @@ MS = data.DataReader("MS", 'google', start, end)
 
 # Wells Fargo
 WFC = data.DataReader("WFC", 'google', start, end)
+```
 
 I create a list of the ticker symbols (as strings) in alphabetical order and call this list: tickers. Then I use pd.concat to concatenate the bank dataframes together to a single data frame called bank_stocks. I set the keys argument equal to the tickers list. And set the column name levels.Now I can check the head of the bank_stocks dataframe.
 
@@ -51,3 +52,4 @@ bank_stocks = pd.concat([BAC, C, GS, JPM, MS, WFC],axis=1,keys=tickers)
 bank_stocks.columns.names = ['Bank Ticker','Stock Info']
 bank_stocks.head()
 ```
+<img src= "https://user-images.githubusercontent.com/66487971/87220282-27827700-c36b-11ea-9de3-af03fb34f742.png" width = 1000>
