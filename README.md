@@ -98,7 +98,7 @@ returns.idmax()
 
 I see that 4 of the banks share the same day for the worst drop. This may be correlated to Obama's inaugural speech.
 
-I also notice that Citigroup's largest drop and biggest gain were very close to one another, and see that [Citigrouo had a stock split](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=citigroup+stock+2011+may)
+I also notice that Citigroup's largest drop and biggest gain were very close to one another, and see that [Citigroup had a stock split](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=citigroup+stock+2011+may)
 When I check the standard deviation of the returns, I see that Citigroup is the riskiest over the entire time period.
 ```python
 returns.std()
