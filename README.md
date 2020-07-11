@@ -53,3 +53,66 @@ bank_stocks.columns.names = ['Bank Ticker','Stock Info']
 bank_stocks.head()
 ```
 <img src= "https://user-images.githubusercontent.com/66487971/87220282-27827700-c36b-11ea-9de3-af03fb34f742.png" width = 1000>
+
+Lets answer some questions, what is the max Close price for each bank's stock throughout the time period?
+```python
+bank_stocks.xs(key='Close',axis=1,level='Stock Info').max()
+```
+<img src= "https://user-images.githubusercontent.com/66487971/87220535-3702bf80-c36d-11ea-9d6b-0f0f31e9ef72.png" width = 150>
+
+I create a new empty DataFrame called returns. This dataframe will contain the returns for each bank's stock. returns are typically defined by:
+
+<img src= "https://user-images.githubusercontent.com/66487971/87220561-7df0b500-c36d-11ea-9759-45d09dbe9f38.png" width = 200>
+
+```python
+returns = pd.DataFrame()
+```
+ I use pandas pct_change() method on the Close column to create a column representing this return value. Then I create a for loop that goes and for each Bank Stock Ticker creates this returns column and set's it as a column in the returns DataFrame.
+
+```python
+for tick in tickers:
+    returns[tick+' Return'] = bank_stocks[tick]['Close'].pct_change()
+returns.head()
+```
+<img src= "https://user-images.githubusercontent.com/66487971/87220616-10915400-c36e-11ea-95de-4e942ecf146e.png" width = 500>
+
+Now I create a pairplot using seaborn of the returns dataframe.
+```python
+import seaborn as sns
+sns.pairplot(returns[1:])
+```
+<img src= "https://user-images.githubusercontent.com/66487971/87220643-66fe9280-c36e-11ea-8403-b879d2666fe8.png" width = 1000>
+
+We can see the Citigroup's crush from this plot. Which you can find more information [here](https://en.wikipedia.org/wiki/Citigroup#November_2008.2C_Collapse_.26_US_Government_Intervention_.28part_of_the_Global_Financial_Crisis.29)
+
+Using this returns DataFrame, I look at  dates each bank stock had the best and worst single day returns.
+```python
+returns.idxmin()
+```
+<img src= "https://user-images.githubusercontent.com/66487971/87220757-77fbd380-c36f-11ea-810b-8185fcb53726.png" width = 150>
+```python
+returns.idmax()
+```
+<img src= "https://user-images.githubusercontent.com/66487971/87220906-85fe2400-c370-11ea-99bc-4391e808582a.png" width = 150>
+
+I see that 4 of the banks share the same day for the worst drop. This may be correlated to Obama's inaugural speech.
+
+I also notice that Citigroup's largest drop and biggest gain were very close to one another, and see that [Citigrouo had a stock split](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=citigroup+stock+2011+may)
+When I check the standard deviation of the returns, I see that Citigroup is the riskiest over the entire time period.
+```python
+returns.std()
+```
+<img src= "https://user-images.githubusercontent.com/66487971/87220975-3a984580-c371-11ea-974f-b6117cf62962.png" width = 150>
+ 
+But if I check just the year 2015, I see that they have very similar risk profiles, but Morgan Stanley or BofA may be the riskiest.
+
+```python
+returns.ix['2015-01-01':'2015-12-31'].std()
+```
+<img src= "https://user-images.githubusercontent.com/66487971/87221022-8ba83980-c371-11ea-998b-92eb612d7ece.png" width = 150>
+
+
+
+
+
+
