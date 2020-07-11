@@ -52,7 +52,7 @@ bank_stocks = pd.concat([BAC, C, GS, JPM, MS, WFC],axis=1,keys=tickers)
 bank_stocks.columns.names = ['Bank Ticker','Stock Info']
 bank_stocks.head()
 ```
-<img src= "https://user-images.githubusercontent.com/66487971/87220282-27827700-c36b-11ea-9de3-af03fb34f742.png" width = 1000>
+<img src= "https://user-images.githubusercontent.com/66487971/87220282-27827700-c36b-11ea-9de3-af03fb34f742.png" width = 800>
 
 Lets answer some questions, what is the max Close price for each bank's stock throughout the time period?
 ```python
@@ -117,14 +117,14 @@ I create a distplot using seaborn of the 2015 returns for Morgan Stanley.
 ```python
 sns.distplot(returns.ix['2015-01-01':'2015-12-31']['MS Return'],color='green',bins=100)
 ```
-<img src= "https://user-images.githubusercontent.com/66487971/87221203-e42c0680-c372-11ea-9733-f4b3a19e4974.png" width = 1000>
+<img src= "https://user-images.githubusercontent.com/66487971/87221203-e42c0680-c372-11ea-9733-f4b3a19e4974.png" width = 600>
 
 Now I create a distplot using seaborn of the 2008 returns for CitiGroup.
 
 ```python
 sns.distplot(returns.ix['2008-01-01':'2008-12-31']['C Return'],color='red',bins=100)
 ```
-<img src= "https://user-images.githubusercontent.com/66487971/87221278-72a08800-c373-11ea-97cb-cd873a925f3e.png" width = 800>
+<img src= "https://user-images.githubusercontent.com/66487971/87221278-72a08800-c373-11ea-97cb-cd873a925f3e.png" width = 600>
 
 It can be seen from this two plots that Morgan Stanley's stock prices were more stable compared to Citigroup's stock prices.
 
@@ -152,7 +152,7 @@ for tick in tickers:
     bank_stocks[tick]['Close'].plot(figsize=(12,4),label=tick)
 plt.legend()
 ```
-<img src= "https://user-images.githubusercontent.com/66487971/87221410-80a2d880-c374-11ea-8323-e47f4eeb7eaa.png" width = 800>
+<img src= "https://user-images.githubusercontent.com/66487971/87221410-80a2d880-c374-11ea-8323-e47f4eeb7eaa.png" width = 600>
 
 Let's analyze the moving averages for these stocks in the year 2008.I  plot the rolling 30 day average against the Close Price for Bank Of America's stock for the year 2008.
 
@@ -162,20 +162,20 @@ BAC['Close'].ix['2008-01-01':'2009-01-01'].rolling(window=30).mean().plot(label=
 BAC['Close'].ix['2008-01-01':'2009-01-01'].plot(label='BAC CLOSE')
 plt.legend()
 ```
-<img src= "https://user-images.githubusercontent.com/66487971/87221488-12aae100-c375-11ea-9f2e-2cdfc911b3b4.png" width = 300>
+<img src= "https://user-images.githubusercontent.com/66487971/87221488-12aae100-c375-11ea-9f2e-2cdfc911b3b4.png" width = 600>
 
 Now I create a heatmap of the correlation between the stocks Close Price.
 ```python
 sns.heatmap(bank_stocks.xs(key='Close',axis=1,level='Stock Info').corr(),annot=True)
 ```
-<img src= "https://user-images.githubusercontent.com/66487971/87221522-4b4aba80-c375-11ea-9a44-4aad6b87297c.png" width = 300>
+<img src= "https://user-images.githubusercontent.com/66487971/87221522-4b4aba80-c375-11ea-9a44-4aad6b87297c.png" width = 600>
 
 And I use seaborn's clustermap to cluster the correlations together.
 
 ```python
 sns.clustermap(bank_stocks.xs(key='Close',axis=1,level='Stock Info').corr(),annot=True)
 ```
-<img src= "https://user-images.githubusercontent.com/66487971/87221559-94027380-c375-11ea-9913-60edd98aabbc.png" width = 800>
+<img src= "https://user-images.githubusercontent.com/66487971/87221559-94027380-c375-11ea-9913-60edd98aabbc.png" width = 600>
 
 It can be easily seen that the Wells Fargo and JPMorgan Chase had strong correlation, and so does CitiGroup, Bank of America and Morgan Stanley in between.
 
