@@ -124,7 +124,7 @@ Now I create a distplot using seaborn of the 2008 returns for CitiGroup.
 ```python
 sns.distplot(returns.ix['2008-01-01':'2008-12-31']['C Return'],color='red',bins=100)
 ```
-<img src= "https://user-images.githubusercontent.com/66487971/87221278-72a08800-c373-11ea-97cb-cd873a925f3e.png" width = 1000>
+<img src= "https://user-images.githubusercontent.com/66487971/87221278-72a08800-c373-11ea-97cb-cd873a925f3e.png" width = 800>
 
 It can be seen from this two plots that Morgan Stanley's stock prices were more stable compared to Citigroup's stock prices.
 
@@ -152,7 +152,7 @@ for tick in tickers:
     bank_stocks[tick]['Close'].plot(figsize=(12,4),label=tick)
 plt.legend()
 ```
-<img src= "https://user-images.githubusercontent.com/66487971/87221410-80a2d880-c374-11ea-8323-e47f4eeb7eaa.png" width = 900>
+<img src= "https://user-images.githubusercontent.com/66487971/87221410-80a2d880-c374-11ea-8323-e47f4eeb7eaa.png" width = 800>
 
 Let's analyze the moving averages for these stocks in the year 2008.I  plot the rolling 30 day average against the Close Price for Bank Of America's stock for the year 2008.
 
@@ -175,7 +175,7 @@ And I use seaborn's clustermap to cluster the correlations together.
 ```python
 sns.clustermap(bank_stocks.xs(key='Close',axis=1,level='Stock Info').corr(),annot=True)
 ```
-<img src= "https://user-images.githubusercontent.com/66487971/87221559-94027380-c375-11ea-9913-60edd98aabbc.png" width = 1100>
+<img src= "https://user-images.githubusercontent.com/66487971/87221559-94027380-c375-11ea-9913-60edd98aabbc.png" width = 800>
 
 It can be easily seen that the Wells Fargo and JPMorgan Chase had strong correlation, and so does CitiGroup, Bank of America and Morgan Stanley in between.
 
